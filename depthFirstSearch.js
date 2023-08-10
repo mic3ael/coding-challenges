@@ -10,7 +10,6 @@ class Node {
   }
 
   depthFirstSearch(array) {
-    // Write your code here.
     const queue = [this];
 
     while (queue.length) {
