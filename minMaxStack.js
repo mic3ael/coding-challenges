@@ -25,7 +25,6 @@ class LinkedList {
   }
 }
 
-// Feel free to add new properties and methods to the class.
 class MinMaxStack {
   constructor() {
     this.elements = new LinkedList();
@@ -34,12 +33,10 @@ class MinMaxStack {
   }
 
   peek() {
-    // Write your code here.
     return this.elements.getTail().value;
   }
 
   pop() {
-    // Write your code here.
     const tailNode = this.elements.getTail();
     if (!tailNode) return;
     if (tailNode === this.elements.getHead()) {
@@ -96,7 +93,6 @@ class MinMaxStack {
   }
 
   push(number) {
-    // Write your code here.
     if (!this.elements.getHead()) {
       const newNode = new Node(number);
       this.elements.setHead(newNode);
@@ -120,12 +116,10 @@ class MinMaxStack {
   }
 
   getMin() {
-    // Write your code here.
     return this.min.val;
   }
 
   getMax() {
-    // Write your code here.
     return this.max.val;
   }
 }
