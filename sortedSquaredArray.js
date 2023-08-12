@@ -19,3 +19,5 @@ function sortedSquaredArray(array) {
 
   return squaredArr;
 }
+
+sortedSquaredArray([-10, -5, 0, 5, 10]);
