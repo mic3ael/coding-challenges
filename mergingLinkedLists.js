@@ -8,7 +8,7 @@ class LinkedList {
 function mergingLinkedLists(linkedListOne, linkedListTwo) {
   let lengthOfTheFirstList = linkedListLength(linkedListOne);
   let lengthOfTheSecondList = linkedListLength(linkedListTwo);
-  let diff = Math.abs(lengthOfTheSecondList - lengthOfTheFirstList);
+  const diff = Math.abs(lengthOfTheSecondList - lengthOfTheFirstList);
 
   if (lengthOfTheFirstList > lengthOfTheSecondList)
     linkedListOne = skipNodes(linkedListOne, diff);
