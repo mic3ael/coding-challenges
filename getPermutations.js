@@ -1,6 +1,7 @@
 function getPermutations(array) {
   const perms = [];
   getPermutationsHelper(0, array, perms);
+  
   return perms;
 }
 
