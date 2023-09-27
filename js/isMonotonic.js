@@ -1,3 +1,4 @@
+// time: O(n), space: O(1)
 function isMonotonic(array) {
   if (!array.length || array.length === 1) return true;
   let isMono = true;
