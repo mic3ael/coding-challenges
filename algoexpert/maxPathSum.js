@@ -1,3 +1,4 @@
+//time: O(n), space: O(log(n))
 function maxPathSum(tree) {
   const result = { maxPathSum: tree.value };
   maxPathSumHelper(tree, result);
