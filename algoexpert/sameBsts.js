@@ -1,4 +1,4 @@
-// time: O(n^2), space: O(n^2) - where n is the length of the arrays
+// time: O(n^2), space: O(n^2) - where n is the length of the arrays - // There is a better solution with optimized space complexity
 function sameBsts(arrayOne, arrayTwo) {
   if (!arrayOne.length && !arrayTwo.length) return true;
   if (arrayOne.length !== arrayTwo.length) return false;
@@ -31,5 +31,3 @@ function greaterOrEqualAndSmallerThanRoot(root, array) {
 
   return [smaller, greater];
 }
-
-// There is an better solution with optimized space complexity
