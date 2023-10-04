@@ -11,12 +11,14 @@ function runLengthEncoding(string) {
       prev = char;
       continue;
     }
-    if (prev === char) count++;
-    else {
-      result += `${count}${prev}`;
-      count = 1;
-      prev = char;
+    if (prev === char) {
+      count++;
+      continue;
     }
+
+    result += `${count}${prev}`;
+    count = 1;
+    prev = char;
   }
 
   result += `${count}${prev}`;
