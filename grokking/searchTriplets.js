@@ -1,5 +1,5 @@
 class Solution {
-  // time: O(n), space: O(n), when n is the length of the array
+  // time: O(n^2), space: O(n), when n is the length of the array In a case when argument array can be mutated during sort algorithm.
   searchTriplets(arr) {
     const triplets = [];
     // sorting
