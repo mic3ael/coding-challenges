@@ -4,8 +4,9 @@ class Solution {
     const triplets = [];
     // sorting
     arr.sort((a, b) => a - b);
-
     for (let i = 0; i < arr.length; i++) {
+      // remove duplications
+      if (i != 0 && arr[i] === arr[i - 1]) continue;
       const pivot = arr[i];
       let leftIdx = i + 1;
       let rightIdx = arr.length - 1;
