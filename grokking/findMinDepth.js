@@ -7,7 +7,7 @@
 }*/
 
 class Solution {
-  // time: O(n), space: O(n), when n is the length of the all nodes in the tree.
+  // time: O(n), space: O(n) - when n is the number of nodes in the tree.
   findDepth(root) {
     let minimumTreeDepth = Number.MAX_SAFE_INTEGER;
     const queue = [{ node: root, depth: 1 }];
