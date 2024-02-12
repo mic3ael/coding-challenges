@@ -7,7 +7,7 @@
 }*/
 
 class Solution {
-  // time: O(n), space: O(n*logN) - when n is the number of nodes in the tree, logN when the current path is stored per node.
+  // time: O(n*logN), space: O(n*logN) - when n is the number of nodes in the tree, time: logN when the current path is copied to the result, logN when the current path is stored per node.
   findPaths(root, sum) {
     const allPaths = [];
     const stack = [{ node: root, path: [], currentSum: 0 }];
