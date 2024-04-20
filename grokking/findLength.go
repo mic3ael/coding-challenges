@@ -12,6 +12,7 @@ func main() {
 	fmt.Println("value: ", s.findLength("aaaaa", 1))
 }
 
+// time: O(n), space: O(k)
 func (s *Solution) findLength(str string, k int) int {
 	windowStartIdx := 0
 	windowEndIdx := 0
