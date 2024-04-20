@@ -1,19 +1,11 @@
-package main
+package grokking
 
 import (
-	"fmt"
 	"math"
 )
 
-type Solution struct{}
-
-func main() {
-	s := &Solution{}
-	fmt.Println("value: ", s.findLength("aaaaa", 1))
-}
-
 // time: O(n), space: O(k)
-func (s *Solution) findLength(str string, k int) int {
+func (s *Solution) FindLength(str string, k int) int {
 	windowStartIdx := 0
 	windowEndIdx := 0
 	visited := make(map[string]int)
