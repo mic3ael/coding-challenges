@@ -18,8 +18,11 @@ func main() {
 	// trieS.Insert("app")
 	// fmt.Println("trieS.Search: ", trieS.Search("app"))
 
-	trieS.Insert("raspberry")
-	trieS.Insert("rascal")
-	fmt.Println("StartsWith: ", trieS.StartsWith("rasp"))
+	// trieS.Insert("raspberry")
+	// trieS.Insert("rascal")
+	// fmt.Println("StartsWith: ", trieS.StartsWith("rasp"))
 	// fmt.Println("StartsWith: ", trieS.StartsWith("rasca"))
+	pairs := trieS.IndexPairs("bluebirdskyscraper",
+		[]string{"blue", "bird", "sky"})
+	fmt.Println("pairs: ", pairs)
 }
