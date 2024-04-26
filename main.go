@@ -9,7 +9,7 @@ func main() {
 	s := &grokking.Solution{}
 	// fmt.Println("findLength: ", s.FindLength("aaaaa", 1))
 	fmt.Println("findMinSubArray: ", s.FindMinSubArray(10, []int{1, 1, 1}))
-	trieS := &grokking.TrieSolution{}
+	// trieS := &grokking.TrieSolution{}
 	// trieS.Insert("")
 	// trieS.Insert("apple")
 	// fmt.Println("trieS.Search: ", trieS.Search("apple"))
@@ -22,7 +22,8 @@ func main() {
 	// trieS.Insert("rascal")
 	// fmt.Println("StartsWith: ", trieS.StartsWith("rasp"))
 	// fmt.Println("StartsWith: ", trieS.StartsWith("rasca"))
-	pairs := trieS.IndexPairs("bluebirdskyscraper",
-		[]string{"blue", "bird", "sky"})
+	sPair := &grokking.PairsSolution{}
+	pairs := sPair.IndexPairs("computerprogram",
+		[]string{"pro", "gram", "computer"})
 	fmt.Println("pairs: ", pairs)
 }
