@@ -1,21 +1,14 @@
-/*class Node {
-  constructor(value, next = null) {
-    this.val = value;
-    this.next = next;
-  }
-}*/
-
+// time: O(n), space: O(1)
 class Solution {
-  // time: O(n), space: O(n)
   reverse(head) {
-    let result = null;
+    let previous = null;
     let current = head;
     while (current) {
-      if (!result) result = new Node(current.val);
-      else result = new Node(current.val, result);
-
+      const n = current;
       current = current.next;
+      n.next = previous;
+      previous = n;
     }
-    return result;
+    return previous;
   }
 }
