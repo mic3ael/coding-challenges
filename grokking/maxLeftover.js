@@ -1,5 +1,5 @@
 class Solution {
-  // time: O(n*logn), space: O(1)
+  // time: O(n*logn), space: O(1/logn) -> the space depends on the sorting algo
   maxLeftover(prices, money) {
     if (prices.length < 2) return money;
     prices.sort((a, b) => a - b);
