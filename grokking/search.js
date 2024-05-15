@@ -1,4 +1,5 @@
 class Solution {
+    
   // time: O(n), space: O(n) -> where n is the length of the input arr.
   search(arr, targetSum) {
     const visited = new Map();
