@@ -23,7 +23,7 @@ class Solution {
 
     return false;
   }
-  // time: O(n), space: O(log n) -> when n is the number of nodes in the tree
+  // time: O(n), space: O(n) -> when n is the number of nodes in the tree
   hasPath2(root, sum) {
     return this.dfs(root, 0, sum);
   }
