@@ -1,6 +1,21 @@
 class Solution {
-  // time: O(n), space: O(n)
   minCostClimbingStairs(cost) {
+    // time: O(n), space: O(1)
+    if (cost.length < 2) return -1;
+    let first = cost[0];
+    let second = cost[1];
+
+    for (let i = 2; i < cost.length; i++) {
+      const element = cost[i];
+      current = element + Math.min(first, second);
+
+      [first, second] = [second, current];
+    }
+
+    return Math.min(first, second);
+  }
+  // time: O(n), space: O(n)
+  minCostClimbingStairs2(cost) {
     if (cost.length < 2) return -1;
 
     const dp = new Array(cost.length);
@@ -14,7 +29,7 @@ class Solution {
     return Math.min(dp[dp.length - 1], dp[dp.length - 2]);
   }
   // time: O(nlogN), space: O(n)
-  minCostClimbingStairs2(cost) {
+  minCostClimbingStairs3(cost) {
     if (cost.length < 2) return;
     const queue = [
       { idx: 0, sum: cost[0] },
