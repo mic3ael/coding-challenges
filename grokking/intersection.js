@@ -1,5 +1,5 @@
 class Solution {
-  // time: O(n), space: O(n)
+  // time: O(n+m), space: O(n+k), n - nums1, m - nums2, k - result
   intersection(nums1, nums2) {
     const nums1Values = new Set(nums1);
 
