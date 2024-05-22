@@ -19,9 +19,10 @@ class Solution {
       if (occurances[changed[i] / 2] <= 0) {
         continue;
       }
+
       if (occurances[changed[i]] <= 0) continue;
-      occurances[changed[i]] = occurances[changed[i]] - 1;
-      occurances[changed[i] / 2] = occurances[changed[i] / 2] - 1;
+      occurances[changed[i]]--;
+      occurances[changed[i] / 2]--;
       original.push(changed[i] / 2);
     }
 
