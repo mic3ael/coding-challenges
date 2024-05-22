@@ -1,5 +1,5 @@
 class Solution {
-  // time: O(n^2), space: O(1)
+  // time: O(n), space: O(1)
   reverseWords(s) {
     let left = 0;
     let right = s.length - 1;
