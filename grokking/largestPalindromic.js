@@ -12,6 +12,7 @@ class Solution {
     let rightIdx = result.length - 1;
     for (let i = countArr.length - 1; i >= 0; i--) {
       while (countArr[i] > 1) {
+        if (leftIdx === 0 && i === 0) break;
         result[leftIdx] = result[rightIdx] = i;
         leftIdx++;
         rightIdx--;
@@ -38,3 +39,5 @@ console.log(s.largestPalindromic('444947137')); // 7449447
 console.log(s.largestPalindromic('998877')); // 987789
 console.log(s.largestPalindromic('9876543210')); // 9
 console.log(s.largestPalindromic('121212')); // 21212
+console.log(s.largestPalindromic('00009')); // 9
+console.log(s.largestPalindromic('282273898509619829360')); // 9988632207022368899
