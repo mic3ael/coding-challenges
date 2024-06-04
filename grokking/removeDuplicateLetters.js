@@ -1,4 +1,5 @@
 class Solution {
+  // time: O(n), space: O(1)
   removeDuplicateLetters(s) {
     const count = new Map();
     const visited = new Set();
