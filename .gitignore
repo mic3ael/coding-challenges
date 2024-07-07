@@ -5,4 +5,5 @@ grokking/addBinary.js
 grokking/backspaceCompare.js
 grokking/find132pattern.js
 grokking/inorderSuccessor.js
+grokking/findCycleStart.js
 algoexpert/largestIsland.js
