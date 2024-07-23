@@ -19,21 +19,13 @@ class Solution {
   }
   // time: O(n), space: O(1) -> where n is the length of the input arr.
   search2(arr, targetSum) {
-    let left = 0;
-    let right = arr.length - 1;
+    let leftIdx = 0;
+    let rightIdx = arr.length - 1;
 
-    while (left < right) {
-      const currentSum = arr[right] + arr[left];
-      if (currentSum === targetSum) {
-        return [left, right];
-      }
-
-      if (currentSum > targetSum) {
-        right--;
-        continue;
-      }
-
-      left++;
+    while (leftIdx < rightIdx) {
+      if (arr[leftIdx] + arr[rightIdx] > targetSum) rightIdx--;
+      else if (arr[leftIdx] + arr[rightIdx] < targetSum) leftIdx++;
+      else return [leftIdx, rightIdx];
     }
 
     return [-1, -1];
