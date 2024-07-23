@@ -1,5 +1,5 @@
 class Solution {
-  // Time: O(n), space: O(1)
+  // time: O(n), space: O(1)
   findMissingNumber(arr) {
     let sum = 0;
     for (let i = 1; i <= arr.length + 1; i++) {
