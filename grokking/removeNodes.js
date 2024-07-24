@@ -45,9 +45,10 @@ head1.next.next = new Node(7);
 head1.next.next.next = new Node(4);
 head1.next.next.next.next = new Node(2);
 head1.next.next.next.next.next = new Node(1);
-// head1 = solution.removeNodes(head1);
-// solution.print(head1);
+head1 = solution.removeNodes(head1);
+solution.print(head1);
 
+// Creating the linked list 5 -> 4 -> 5 -> 4 -> 5
 let head2 = new Node(5);
 head2.next = new Node(4);
 head2.next.next = new Node(5);
