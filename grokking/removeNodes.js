@@ -13,13 +13,14 @@ class Solution {
     while (current) {
       while (stack.length && current.val > stack[stack.length - 1].val) {
         stack.pop();
-        if (stack.length) stack[stack.length - 1].next = current;
       }
+
+      if (stack.length) stack[stack.length - 1].next = current;
 
       stack.push(current);
       current = current.next;
     }
-    return stack[0];
+    return stack.length > 0 ? stack[0] : null;
   }
   print(head) {
     let node = head;
