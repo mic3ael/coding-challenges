@@ -7,26 +7,23 @@ class TreeNode {
 }
 
 class Solution {
+  // time: O(n), space: O(n)
   traverse(root) {
     const result = [];
     if (!root) return result;
     const queue = [{ node: root, level: 0 }];
-    let prevLevel = 0;
     while (queue.length) {
       let item;
-      if (prevLevel % 2 === 0) item = queue.shift();
-      else item = queue.pop();
+      item = queue.shift();
       const { node, level } = item;
-      if (level % 2 === 0) {
-        if (node.right) queue.push({ node: node.right, level: level + 1 });
-        if (node.left) queue.push({ node: node.left, level: level + 1 });
-      } else {
-        if (node.left) queue.push({ node: node.left, level: level + 1 });
-        if (node.right) queue.push({ node: node.right, level: level + 1 });
-      }
+
+      if (node.left) queue.push({ node: node.left, level: level + 1 });
+      if (node.right) queue.push({ node: node.right, level: level + 1 });
+
       if (result.length <= level) result.push([]);
-      result[level].push(node.val);
-      prevLevel = level;
+      if (level % 2 === 0) {
+        result[level].push(node.val);
+      } else result[level].unshift(node.val);
     }
 
     return result;
