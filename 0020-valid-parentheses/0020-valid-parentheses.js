@@ -1,9 +1,3 @@
-
-const openParentheses = new Map();
-openParentheses.set("(",")");
-openParentheses.set("{","}");
-openParentheses.set("[","]");
-
 const closeParentheses = new Map();
 closeParentheses.set(")","(");
 closeParentheses.set("}","{");
@@ -17,8 +11,9 @@ var isValid = function(s) {
     const stack = [];
     for(let i = 0; i < s.length; i++){
         if(closeParentheses.has(s.charAt(i))) {
-            const p = stack.pop();
-            if(openParentheses.get(p) !== s.charAt(i)) return false;
+            const lastP = stack.pop();
+            const requiredP = closeParentheses.get(s.charAt(i));
+            if(requiredP !== lastP) return false;
         } else {
             stack.push(s.charAt(i));
         }
