@@ -24,5 +24,5 @@ var minRemoveToMakeValid = function(s) {
         result[idx] = "";
     }
 
-    return result.filter(elem => elem != "").join("");
+    return result.join("");
 };
