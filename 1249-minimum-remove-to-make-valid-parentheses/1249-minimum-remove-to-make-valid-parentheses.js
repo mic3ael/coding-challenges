@@ -5,34 +5,24 @@
 var minRemoveToMakeValid = function(s) {
 
     const openStack = [];
-    let result = "";
+    let result = s.split("");
 
     for(let i = 0; i < s.length; i++){
         if(s.charAt(i) === "(")
-            openStack.push(result.length);
+            openStack.push(i);
         
         if(s.charAt(i) === ")"){
             if(openStack.length === 0)
-                continue;
+                result[i] = "";
             else 
                 openStack.pop();
         }
-
-        result += s.charAt(i);
     }
 
-
-    if(openStack.length === 0) return result;
-
-    const skipIdxs = new Set(openStack);
-    
-    let finalResult = "";
-    
-    for(let i = 0; i < result.length; i++){
-        if(skipIdxs.has(i))
-            continue;
-        finalResult += result.charAt(i);
+    while(openStack.length != 0){
+        const idx = openStack.pop();
+        result[idx] = "";
     }
 
-    return finalResult;
+    return result.filter(elem => elem != "").join("");
 };
