@@ -4,7 +4,7 @@
  * @return {string}
  */
 
-// time: O(n) - in the desc sorted array can be O(n^2), space: O(1)
+// time: O(n) - in the desc sorted array can be O(n^2), space: O(1) - tail recursion
 var kthLargestNumber = function (nums, k) {
   const kLargestIdx = nums.length - k;
   return quickSelect(nums, 0, nums.length - 1, kLargestIdx);
