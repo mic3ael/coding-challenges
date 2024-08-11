@@ -11,13 +11,13 @@
  * @return {number}
  */
 // time: O(n), space: O(n)
-var maxDepth2 = function(root) {
+var maxDepth = function(root) {
     if(root == null) return 0;
 
     return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 };
 
-var maxDepth = function(root) {
+var maxDepth2 = function(root) {
     if(root == null) return 0;
     const queue = [{ node: root, depth: 1 }];
     let maxDepth = 0;
