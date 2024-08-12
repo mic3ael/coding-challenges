@@ -12,7 +12,7 @@
  */
 var levelOrderBottom = function(root) {
     const stack = [{node: root, level: 0}];
-    const result = [];
+    const result = new Array();
 
     while(stack.length){
         const { node, level } = stack.pop();
