@@ -14,7 +14,7 @@
 var maxDepth3 = function(root) {
     if(root == null) return 0;
 
-    return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    return Math.max(maxDepth3(root.left), maxDepth3(root.right)) + 1;
 };
 
 // time: O(n), space: O(n)
