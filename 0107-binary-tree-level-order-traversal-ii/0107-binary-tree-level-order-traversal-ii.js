@@ -10,7 +10,7 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var levelOrderBottom = function(root) {
+var levelOrderBottom2 = function(root) {
     const stack = [{node: root, level: 0}];
     const result = new Array();
 
@@ -28,3 +28,20 @@ var levelOrderBottom = function(root) {
 
     return result.reverse();
 };
+
+var levelOrderBottom = function(root) {
+    const valuesByLevel = combineByLevel(root);
+    return valuesByLevel.reverse();
+}
+
+function combineByLevel(node, level = 0, result = []){
+    if(node == null) return result;
+    if(result.length < level + 1)
+        result.push([]);
+    result[level].push(node.val);
+
+    combineByLevel(node.left, level+1, result);
+    combineByLevel(node.right, level+1, result);
+
+    return result;
+}
