@@ -10,17 +10,17 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
-var rightSideView2 = function(root, level = 0, result = []) {
+var rightSideView = function(root, level = 0, result = []) {
     if(root == null) return result;
     
     if(result.length < level + 1)
         result.push(root.val);
-    rightSideView2(root.right, level+1, result);
-    rightSideView2(root.left, level+1, result);
+    rightSideView(root.right, level+1, result);
+    rightSideView(root.left, level+1, result);
     return result;
 };
 
-var rightSideView = function(root) {
+var rightSideView2 = function(root) {
     const result = [];
     if(root == null) return result;
     const queue = [root];
