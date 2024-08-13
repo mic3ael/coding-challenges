@@ -18,6 +18,5 @@ var maxProfit = function(prices) {
         mProfit = Math.max(mProfit, profit);
     }
     
-    // console.log("a: ", prices[rightIdx] - prices[leftIdx]);
     return mProfit;
 };
