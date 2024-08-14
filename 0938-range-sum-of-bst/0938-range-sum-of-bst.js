@@ -12,7 +12,7 @@
  * @param {number} high
  * @return {number}
  */
-var rangeSumBST = function(root, low, high) {
+var rangeSumBST2 = function(root, low, high) {
     if(root == null) return 0;
     
     let currentSum = 0;
@@ -21,5 +21,22 @@ var rangeSumBST = function(root, low, high) {
         currentSum += root.val
     }
 
-    return rangeSumBST(root.left, low, high) + rangeSumBST(root.right, low, high) + currentSum;
+    return rangeSumBST2(root.left, low, high) + rangeSumBST2(root.right, low, high) + currentSum;
 };
+
+var rangeSumBST = function(root, low, high) {
+    const stack = [root];
+    let sum = 0;
+    while(stack.length){
+        const node = stack.pop();
+        if(node && node.val >= low && node.val <= high)
+            sum += node.val;
+        
+        if(node.left)
+            stack.push(node.left);
+        if(node.right)
+            stack.push(node.right);
+    }
+
+    return sum;
+}
