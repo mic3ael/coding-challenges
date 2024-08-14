@@ -17,21 +17,23 @@ class LinkedList {
         this.head = null;
         this.tail = null;
     }
-    add(node: Node): void {
+    add(node: Node): Node {
         if(!this.head){
             this.head = node;
             this.tail = node;
-            return;
+            return this.head;
         } 
+
+        if(node === this.head) return this.head;
 
         if(node.next == null && node.prev == null){
             const temp = this.head;
             this.head = node;
             this.head.next = temp;
-            temp.prev = this.head;
-            return;
+            this.head.next.prev = this.head;
+            return this.head;
         }
-            
+
         if(node === this.tail) {
             this.tail = node.prev;
             this.tail.next = null;
@@ -39,12 +41,9 @@ class LinkedList {
             this.head = node;
             this.head.next = temp;
             temp.prev = this.head;
-            return;
+            return this.head;
         }
 
-
-        if(node === this.head) return;
-        
         const prev = node.prev;
         prev.next = node.next;
         node.next.prev = prev;
@@ -54,6 +53,8 @@ class LinkedList {
         this.head = node;
         this.head.next = temp;
         this.head.next.prev = this.head;
+
+        return this.head;
     }
     all(){
         let current = this.head;
@@ -96,26 +97,27 @@ class LRUCache {
     get(key: number): number | void {
         if(!this.data.has(key)) return -1;
         const node = this.data.get(key);
-        this.order.add(node);
+        const updatedNode = this.order.add(node);
+        this.data.set(key, updatedNode);
         return node.val.value;
     }
 
     put(key: number, value: number): void {
-        if(this.capacity <= this.data.size){
+        if(this.capacity <= this.data.size && !this.data.has(key)){
             const node = this.order.remove();
             this.data.delete(node.val.key);
         }
 
         if(!this.data.has(key)){
             const node = new Node({ key, value });
-            this.data.set(key, node);
-            this.order.add(node);
+            const updatedNode = this.order.add(node);
+            this.data.set(key, updatedNode);
             return;
         }
-
         const node = this.data.get(key);
         node.val.value = value;
-        this.order.add(node);
+        const updatedNode = this.order.add(node);
+        this.data.set(key, updatedNode);
     }
 }
 
