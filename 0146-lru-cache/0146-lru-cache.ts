@@ -109,8 +109,8 @@ class LRUCache {
 
         if(!this.data.has(key)){
             const node = new Node({ key, value });
-            const updatedNode = this.order.add(node);
-            this.data.set(key, updatedNode);
+            this.order.add(node);
+            this.data.set(key, node);
             return;
         }
         const node = this.data.get(key);
