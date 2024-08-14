@@ -115,8 +115,8 @@ class LRUCache {
         }
         const node = this.data.get(key);
         node.val.value = value;
-        const updatedNode = this.order.add(node);
-        this.data.set(key, updatedNode);
+        this.order.add(node);
+        this.data.set(key, node);
     }
 }
 
