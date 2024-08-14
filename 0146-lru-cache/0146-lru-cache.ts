@@ -17,21 +17,21 @@ class LinkedList {
         this.head = null;
         this.tail = null;
     }
-    add(node: Node): Node {
+    add(node: Node): void {
         if(!this.head){
             this.head = node;
             this.tail = node;
-            return this.head;
+            return;
         } 
 
-        if(node === this.head) return this.head;
+        if(node === this.head) return;
 
         if(node.next == null && node.prev == null){
             const temp = this.head;
             this.head = node;
             this.head.next = temp;
             this.head.next.prev = this.head;
-            return this.head;
+            return;
         }
 
         if(node === this.tail) {
@@ -41,7 +41,7 @@ class LinkedList {
             this.head = node;
             this.head.next = temp;
             temp.prev = this.head;
-            return this.head;
+            return;
         }
 
         const prev = node.prev;
@@ -53,8 +53,6 @@ class LinkedList {
         this.head = node;
         this.head.next = temp;
         this.head.next.prev = this.head;
-
-        return this.head;
     }
     all(){
         let current = this.head;
