@@ -98,8 +98,6 @@ class LRUCache {
         if(!this.data.has(key)) return -1;
         const node = this.data.get(key);
         this.order.add(node);
-        // console.log("get - node: ", node);
-        // this.data.set(key, updatedNode);
         return node.val.value;
     }
 
