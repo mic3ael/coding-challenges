@@ -1,8 +1,4 @@
 class Node {
-  val;
-  next;
-  prev;
-
   constructor(val, next = null, prev = null) {
     this.val = val;
     this.next = next;
@@ -11,8 +7,6 @@ class Node {
 }
 
 class LinkedList {
-  head;
-  tail;
   constructor() {
     this.head = null;
     this.tail = null;
@@ -21,25 +15,47 @@ class LinkedList {
     if (!this.head) {
       this.head = node;
       this.tail = node;
-    } else {
+      return;
+    }
+
+    if (node === this.head) return;
+
+    if (node.next == null && node.prev == null) {
       const temp = this.head;
       this.head = node;
-
-      if (node.next == null && node.prev == null) {
-        this.head.next = temp;
-        temp.prev = this.head;
-      } else {
-        const prev = node.prev;
-        prev.next = node.next;
-
-        if (node === this.tail) {
-          this.tail = prev;
-          this.tail.next = null;
-        } else if (node.next && node.next.prev) {
-          node.next.prev = prev;
-        }
-      }
+      this.head.next = temp;
+      this.head.next.prev = this.head;
+      return;
     }
+
+    if (node === this.tail) {
+      this.tail = node.prev;
+      this.tail.next = null;
+      const temp = this.head;
+      this.head = node;
+      this.head.next = temp;
+      temp.prev = this.head;
+      return;
+    }
+
+    const prev = node.prev;
+    prev.next = node.next;
+    node.next.prev = prev;
+    node.next = null;
+    node.prev = null;
+    const temp = this.head;
+    this.head = node;
+    this.head.next = temp;
+    this.head.next.prev = this.head;
+  }
+  all() {
+    let current = this.head;
+    const result = [];
+    while (current) {
+      result.push(current.val);
+      current = current.next;
+    }
+    return result;
   }
   remove() {
     // empty list
@@ -60,10 +76,6 @@ class LinkedList {
 }
 
 class LRUCache {
-  capacity;
-  data;
-  order;
-
   constructor(capacity) {
     this.capacity = capacity;
     this.data = new Map();
@@ -71,39 +83,38 @@ class LRUCache {
   }
 
   get(key) {
-    if (!this.data.has(key)) return;
+    if (!this.data.has(key)) return -1;
     const node = this.data.get(key);
     this.order.add(node);
     return node.val.value;
   }
 
   put(key, value) {
-    if (this.capacity < this.data.size) {
+    if (this.capacity <= this.data.size && !this.data.has(key)) {
       const node = this.order.remove();
       this.data.delete(node.val.key);
     }
 
     if (!this.data.has(key)) {
       const node = new Node({ key, value });
-      this.data.set(key, node);
       this.order.add(node);
+      this.data.set(key, node);
       return;
     }
-
     const node = this.data.get(key);
     node.val.value = value;
     this.order.add(node);
+    this.data.set(key, node);
   }
 }
 
 const lru = new LRUCache(2);
-
-lru.put(1, 1);
-lru.put(2, 2);
+console.log(lru.put(1, 1));
+console.log(lru.put(2, 2));
 console.log(lru.get(1));
-lru.put(3, 3);
+console.log(lru.put(3, 3));
 console.log(lru.get(2));
-lru.put(4, 4);
+console.log(lru.put(4, 4));
 console.log(lru.get(1));
 console.log(lru.get(3));
 console.log(lru.get(4));
