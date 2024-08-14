@@ -54,15 +54,6 @@ class LinkedList {
         this.head.next = temp;
         this.head.next.prev = this.head;
     }
-    all(){
-        let current = this.head;
-        const result = [];
-        while(current){
-            result.push(current.val);
-            current = current.next;
-        }
-        return result;
-    }
     remove(): Node {
         // empty list
         if(this.tail == null) return;
