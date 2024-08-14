@@ -24,7 +24,7 @@ var rangeSumBST2 = function(root, low, high) {
     return rangeSumBST2(root.left, low, high) + rangeSumBST2(root.right, low, high) + currentSum;
 };
 
-var rangeSumBST = function(root, low, high) {
+var rangeSumBST3 = function(root, low, high) {
     const stack = [root];
     let sum = 0;
     while(stack.length){
@@ -39,4 +39,20 @@ var rangeSumBST = function(root, low, high) {
     }
 
     return sum;
+}
+
+var rangeSumBST = function(root, low, high) {
+    const result = {sum: 0};
+    dfsSum(root, low, high, result);
+    return result.sum;
+}
+
+function dfsSum(node, low, high, result){
+    if(node == null) return;
+
+    if(node.val >= low && node.val <= high)
+        result.sum += node.val;
+    
+    dfsSum(node.left, low, high, result);
+    dfsSum(node.right, low, high, result);
 }
