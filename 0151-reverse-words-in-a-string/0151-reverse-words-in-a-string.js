@@ -3,6 +3,5 @@
  * @return {string}
  */
 var reverseWords = function(s) {
-    const split = s.split(' ').filter(s => s);
-    return split.reverse().join(' ');
+    return s.split(' ').filter(s => s).reverse().join(' ');
 };
