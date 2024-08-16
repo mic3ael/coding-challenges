@@ -6,12 +6,12 @@ var productExceptSelf = function(nums) {
     const leftToRight = [1];
     const rightToLeft = [1];
 
-    for(let i = 0; i < nums.length - 1; i++){
-        leftToRight.push(leftToRight[i] * nums[i]);
-    }
+    let i = 0;
 
-    for(let i = nums.length - 1; i > 0; i--){
-        rightToLeft.unshift(rightToLeft[0] * nums[i]);
+    while(i < nums.length - 1){
+        leftToRight.push(leftToRight[i] * nums[i]);
+        rightToLeft.unshift(rightToLeft[0] * nums[nums.length -1 - i]);
+        i++;
     }
 
     const result = [];
