@@ -19,10 +19,8 @@ var findComplement = function(num) {
     }
 
     let result = 0;
-    const reverseAnswer = answerBinary.reverse();
-
-    for(let i = 0; i < reverseAnswer.length; i++){
-        result += reverseAnswer[i] * Math.pow(2, i);
+    for(let i = answerBinary.length - 1; i >= 0 ; i--){
+        result += answerBinary[i] * Math.pow(2, answerBinary.length - 1 - i);
     }
 
     return result;
