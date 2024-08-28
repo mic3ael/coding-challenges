@@ -23,9 +23,6 @@ var countSubIslands = function(grid1, grid2) {
                 const [r, c] = queue.shift();
                 
                 if(grid1[r][c] != 1){
-                    const g2 = grid2[r][c];
-                    const g1 = grid1[r][c];
-                    console.log({r, c, g2, g1});
                     isSub = false;
                 }
                                 
@@ -36,12 +33,11 @@ var countSubIslands = function(grid1, grid2) {
                     if(newRow < 0 || newRow > grid2.length - 1) continue;
                     if(newCol < 0 || newCol > grid2[newRow].length - 1) continue;
                     if(grid2[newRow][newCol] !== 1) continue;
-                    
+                    grid2[newRow][newCol] = -1;
                     queue.push([newRow, newCol]);
-                    console.log({queue});
                 }
-                grid2[r][c] = -1;
             }
+
             if(isSub)
                 countSubs++;
         }
