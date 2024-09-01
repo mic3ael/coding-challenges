@@ -49,7 +49,7 @@ var orangesRotting = function (grid) {
             numberOfElems = rottenQueue.length;
         }
     }
-    console.log({minutes})
+
     if (countFresh > 0) return -1;
 
     return minutes;
