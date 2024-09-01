@@ -25,7 +25,6 @@ var orangesRotting = function (grid) {
     let minutes = 0;
     let numberOfElems = rottenQueue.length;
     
-    console.log({rottenQueue, countFresh});
     
     while (rottenQueue.length) {
         const [currentRow, currentCol] = rottenQueue.shift();
