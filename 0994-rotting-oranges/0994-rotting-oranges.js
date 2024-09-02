@@ -4,11 +4,13 @@
  */
 var orangesRotting = function (grid) {
     let countFresh = 0;
+    const FRESH = 1;
+    const ROTTEN = 2;
     const rottenQueue = [];
     for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid[row].length; col++) {
-            if (grid[row][col] == 1) countFresh++;
-            if (grid[row][col] == 2) rottenQueue.push([row, col]);
+            if (grid[row][col] == FRESH) countFresh++;
+            if (grid[row][col] == ROTTEN) rottenQueue.push([row, col]);
         }
     }
 
@@ -37,7 +39,7 @@ var orangesRotting = function (grid) {
 
             if (nextRow < 0 || nextRow > grid.length - 1) continue;
             if (nextCol < 0 || nextCol > grid[nextRow].length - 1) continue;
-            if (grid[nextRow][nextCol] != 1) continue;
+            if (grid[nextRow][nextCol] != FRESH) continue;
             grid[nextRow][nextCol] = -1;
             countFresh--;
             rottenQueue.push([nextRow, nextCol]);
