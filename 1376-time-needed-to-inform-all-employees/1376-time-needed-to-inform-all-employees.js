@@ -5,43 +5,43 @@
  * @param {number[]} informTime
  * @return {number}
  */
-var numOfMinutes2 = function(n, headID, manager, informTime) {
-    const organization = new Map();
+// var numOfMinutes2 = function(n, headID, manager, informTime) {
+//     const organization = new Map();
     
-    for(let i = 0; i < n; i++)
-        organization.set(i, []);
+//     for(let i = 0; i < n; i++)
+//         organization.set(i, []);
 
-    for(let i = 0; i < manager.length; i++){
-        if(manager[i] == -1) continue;
-        organization.get(manager[i]).push(i);
-    }
+//     for(let i = 0; i < manager.length; i++){
+//         if(manager[i] == -1) continue;
+//         organization.get(manager[i]).push(i);
+//     }
 
-    // console.log({organization});
+//     // console.log({organization});
 
-    const queue = [[headID, organization.get(headID)]];
-    let nodesAtLevel = 1;
-    let currentMaxTimeLevel = 0;
-    let totalMinutes = 0;
+//     const queue = [[headID, organization.get(headID)]];
+//     let nodesAtLevel = 1;
+//     let currentMaxTimeLevel = 0;
+//     let totalMinutes = 0;
     
-    while(queue.length){
-        const [manager, employees] = queue.shift();
-        nodesAtLevel--;
-        currentMaxTimeLevel = Math.max(informTime[manager], currentMaxTimeLevel);
+//     while(queue.length){
+//         const [manager, employees] = queue.shift();
+//         nodesAtLevel--;
+//         currentMaxTimeLevel = Math.max(informTime[manager], currentMaxTimeLevel);
 
-        for(let i = 0; i < employees.length; i++){
-            const nextManager = employees[i];
-            queue.push([nextManager, organization.get(nextManager)]);
-        }
+//         for(let i = 0; i < employees.length; i++){
+//             const nextManager = employees[i];
+//             queue.push([nextManager, organization.get(nextManager)]);
+//         }
 
-        if(nodesAtLevel == 0){
-            nodesAtLevel = queue.length;
-            totalMinutes += currentMaxTimeLevel;
-            currentMaxTimeLevel = 0;
-        }
-    }
+//         if(nodesAtLevel == 0){
+//             nodesAtLevel = queue.length;
+//             totalMinutes += currentMaxTimeLevel;
+//             currentMaxTimeLevel = 0;
+//         }
+//     }
  
-    return totalMinutes;
-};
+//     return totalMinutes;
+// };
 
 var numOfMinutes = function(n, headID, manager, informTime) {
     const organization = new Map();
