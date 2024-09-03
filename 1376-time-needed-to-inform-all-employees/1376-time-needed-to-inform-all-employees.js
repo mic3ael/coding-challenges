@@ -54,8 +54,7 @@ var numOfMinutes = function(n, headID, manager, informTime) {
         organization.get(manager[i]).push(i);
     }
 
-    const result = dfs(headID, organization, informTime);
-    return result;
+    return dfs(headID, organization, informTime);
 }
 
 function dfs(manager, organization, informTime){
