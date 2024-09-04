@@ -50,23 +50,24 @@ var canFinish = function(numCourses, prerequisites) {
         dag[pre] += 1;
     }
 
-    while(numCourses > 0){
+    const stack = [];
 
-        for(let course = 0; course < dag.length; course++) {
-            
-            if(dag[course] != 0) continue;
-            const pres = adjList[course];
-            
-            for(let i = 0; i < pres.length; i++){
-                dag[pres[i]] -= 1;
-            }
-        }
-
-        numCourses--;
+    for(let i = 0; i < dag.length; i++){
+        if(dag[i] === 0) stack.push(i);
     }
 
-    for(let course = 0; course < dag.length; course++)
-        if(dag[course] > 0) return false;
-    
-    return true;
+    let count = 0;
+
+    while(stack.length) {
+        const course = stack.pop();
+        count++;
+        const pres = adjList[course];
+        for(let i = 0; i < pres.length; i++){
+            const pre = pres[i];
+            dag[pre] -= 1;
+            if(dag[pre] == 0) stack.push(pre);
+        }
+    }
+
+    return count >= numCourses;
 }
