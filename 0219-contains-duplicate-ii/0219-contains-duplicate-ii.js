@@ -5,7 +5,6 @@
  */
 var containsNearbyDuplicate = function(nums, k) {
     const occurs = new Map();
-    console.log("Row 8");
     for(let i = 0; i < nums.length; i++) {
         if(!occurs.has(nums[i])) occurs.set(nums[i], []);
         occurs.get(nums[i]).push(i);
