@@ -3,10 +3,9 @@
  * @param {number[][]} prerequisites
  * @return {boolean}
  */
-var canFinish = function(numCourses, prerequisites) {
+var canFinish2 = function(numCourses, prerequisites) {
     const adjList = new Map();
 
-    // init adj list
     for(let course = 0; course < numCourses; course++){
         adjList.set(course, []);
     }
@@ -15,8 +14,6 @@ var canFinish = function(numCourses, prerequisites) {
         const [pre, course] = prerequisites[i];
         adjList.get(course).push(pre);
     }
-
-    console.log({adjList});
 
     for(let course = 0; course < numCourses; course++){
         const visited = new Set();
@@ -38,3 +35,38 @@ var canFinish = function(numCourses, prerequisites) {
 
     return true;
 };
+
+var canFinish = function(numCourses, prerequisites) {
+    const adjList = new Array(numCourses);
+    
+    for(let i = 0; i < adjList.length; i++){
+        adjList[i] = new Array();
+    }
+
+    const dag = new Array(numCourses).fill(0);
+    for(let i = 0; i < prerequisites.length; i++) {
+        const [pre, course] = prerequisites[i];
+        adjList[course].push(pre);
+        dag[pre] += 1;
+    }
+
+    while(numCourses > 0){
+
+        for(let course = 0; course < dag.length; course++) {
+            
+            if(dag[course] != 0) continue;
+            const pres = adjList[course];
+            
+            for(let i = 0; i < pres.length; i++){
+                dag[pres[i]] -= 1;
+            }
+        }
+
+        numCourses--;
+    }
+
+    for(let course = 0; course < dag.length; course++)
+        if(dag[course] > 0) return false;
+    
+    return true;
+}
