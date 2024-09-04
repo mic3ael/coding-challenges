@@ -18,7 +18,7 @@ var jump = function(nums) {
         }
     }
     
-    const seen = new Map();
+    const seen = new Array(nums.length).fill(null);
     const min = dfs(0, adjList, seen);
     return min;
 };
@@ -29,12 +29,12 @@ function dfs(index, adjList, seen){
     const options = adjList[index];
     let min = adjList.length;
 
-    if(seen.has(index)) return seen.get(index);
+    if(seen[index]) return seen[index];
 
     for(let i = 0; i < options.length; i++){
         min = Math.min(dfs(options[i], adjList, seen), min);
     }
 
-    seen.set(index, min + 1);
+    seen[index] = min + 1;
     return min + 1;
 }
