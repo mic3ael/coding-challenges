@@ -17,23 +17,24 @@ var jump = function(nums) {
             j++;
         }
     }
-
-    const min = dfs(0, adjList);
+    
+    const seen = new Map();
+    const min = dfs(0, adjList, seen);
     return min;
 };
 
-function dfs(index, adjList){
+function dfs(index, adjList, seen){
     if(index >= adjList.length - 1) return 0;
     
     const options = adjList[index];
     let min = adjList.length;
 
-    // if(seen.has(index)) return seen.get(index);
+    if(seen.has(index)) return seen.get(index);
 
     for(let i = 0; i < options.length; i++){
-        min = Math.min(dfs(options[i], adjList), min);
+        min = Math.min(dfs(options[i], adjList, seen), min);
     }
 
-    // seen.set(index, min + 1);
+    seen.set(index, min + 1);
     return min + 1;
 }
