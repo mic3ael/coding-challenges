@@ -5,6 +5,7 @@
 var lengthOfLastWord = function(s) {
     let lastLen = 0;
     let currentLen = 0;
+
     for(let i = 0; i < s.length; i++){
         if(s.charAt(i) == ' '){
             lastLen = currentLen;           
@@ -17,6 +18,7 @@ var lengthOfLastWord = function(s) {
 
         currentLen++;
     }
+    
     if(currentLen) return currentLen;
     return lastLen;
 };
