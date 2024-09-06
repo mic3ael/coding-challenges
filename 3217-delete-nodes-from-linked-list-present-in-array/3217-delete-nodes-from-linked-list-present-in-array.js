@@ -18,8 +18,8 @@ var modifiedList = function(nums, head) {
     let current = head;
     let newHead = new ListNode();
     let prev = newHead;
+    
     while(current.next){
-        
         const node = current;
         current = current.next;
         node.next = null;
