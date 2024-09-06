@@ -2,17 +2,13 @@
  * @param {Function} fn
  * @return {Function}
  */
-var once = function(fn) {
-    let value = null;
-    let key = null;
-    return function(...args){
-        const nextKey = args.toString();
-        if(key == null) {
-            key = nextKey;
-            value = fn(...args);
-            return value;                
+var once = function (fn) {
+    let isCalled = false;
+    return function (...args) {
+        if (!isCalled) {
+            isCalled = true;
+            return fn(...args);
         }
-        if(nextKey == value) return value;
     }
 };
 
