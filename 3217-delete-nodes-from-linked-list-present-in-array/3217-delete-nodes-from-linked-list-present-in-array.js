@@ -20,14 +20,14 @@ var modifiedList = function(nums, head) {
     let prev = newHead;
     
     while(current.next){
-        if(nums.has(current.val)) {
-            current = current.next;
-            continue;
-        }
-        prev.next = current;
-        prev = prev.next;
+        const node = current;
         current = current.next;
-        prev.next = null;
+        node.next = null;
+        
+        if(!nums.has(node.val)) {
+           prev.next = node;
+           prev = prev.next;
+        }
     }
     
     if(!nums.has(current.val)) prev.next = current;
