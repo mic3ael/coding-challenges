@@ -24,9 +24,10 @@ var modifiedList = function(nums, head) {
             current = current.next;
             continue;
         }
-        prev.next = current;
-        prev = prev.next;
+        const node = current;
         current = current.next;
+        prev.next = node;
+        prev = prev.next;
         prev.next = null;
     }
     
