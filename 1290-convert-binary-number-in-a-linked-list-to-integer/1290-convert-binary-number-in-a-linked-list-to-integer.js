@@ -10,20 +10,21 @@
  * @return {number}
  */
 var getDecimalValue = function(head) {
-    const stack = [];
     let current = head;
-    
+    let count = 0;
     while(current){
-        stack.push(current.val);
+        count++;
         current = current.next;
     }
-
+    
+    current = head;
     let result = 0;
-    let pow = 0;
-    while(stack.length){
-        const mul = stack.pop();
+    let pow = count - 1;
+    while(current){
+        const mul = current.val;
         result += Math.pow(2, pow) * mul;
-        pow++;
+        pow--;
+        current = current.next;
     }
 
     return result;
