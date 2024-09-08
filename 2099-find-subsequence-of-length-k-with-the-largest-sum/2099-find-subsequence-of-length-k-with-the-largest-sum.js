@@ -75,11 +75,12 @@ class MaxHeap {
  */
 var maxSubsequence = function(nums, k) {
     const maxHeap = new MaxHeap();
+    
     for(let i = 0; i < nums.length; i++){
         maxHeap.add(nums[i], i);
     }
     
-    const result = new Array(nums.length).fill(null);
+    const result = new Array(nums.length);
     
     while(k > 0){
         const item = maxHeap.delete();
@@ -90,7 +91,7 @@ var maxSubsequence = function(nums, k) {
     const finalResult = [];
 
     for(let i = 0; i < result.length; i++) {
-        if(result[i] == null) continue;
+        if(isNaN(result[i])) continue;
         finalResult.push(result[i]);
     }
 
