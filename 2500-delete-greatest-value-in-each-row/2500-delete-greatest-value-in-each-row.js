@@ -68,7 +68,7 @@ class MaxHeap {
  * @return {number}
  */
 var deleteGreatestValue = function(grid) {
-    const heaps = [];
+    const heaps = new Array(grid.length);
     let cols = 0;
     for(let row = 0; row < grid.length; row++){
         const maxHeap = new MaxHeap();
@@ -76,7 +76,7 @@ var deleteGreatestValue = function(grid) {
         for(let col = 0; col < grid[row].length; col++){
             maxHeap.add(grid[row][col]);
         }
-        heaps.push(maxHeap);
+        heaps[row] = maxHeap;
     }
     
     let sum = 0;
