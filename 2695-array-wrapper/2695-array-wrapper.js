@@ -15,7 +15,6 @@ class ArrayWrapper {
     
     toString() {
         if(this.data.length == 0) return `[]`;
-
         let result = `[`;
         for(let i = 0; i < this.data.length - 1; i++){
             result += `${this.data[i]},`;
