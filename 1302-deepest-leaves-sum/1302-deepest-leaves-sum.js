@@ -15,6 +15,7 @@ var deepestLeavesSum = function(root) {
     let levelNodes = 1;
     let levelSum = 0;
     let deepestLevelSum = 0;
+    
     while(queue.length){
         const node = queue.shift();
         levelNodes--;
