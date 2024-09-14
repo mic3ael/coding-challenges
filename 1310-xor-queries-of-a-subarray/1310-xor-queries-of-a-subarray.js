@@ -11,18 +11,16 @@ var xorQueries = function(arr, queries) {
         sum ^= arr[i];
         prefixSum[i] = sum;
     }   
-    
-    
+
     const result = new Array(queries.length);
     
     for(let i = 0; i < queries.length; i++){
         let [leftIdx, rightIdx] = queries[i];
         let current = prefixSum[rightIdx];
-        leftIdx--;
-        while(leftIdx >= 0){
-            current ^= arr[leftIdx];
-            leftIdx--;
-        }
+        if(leftIdx > 0)
+            current ^= prefixSum[leftIdx - 1];
+        else 
+            current = prefixSum[rightIdx];
         result[i] = current;
     }
 
