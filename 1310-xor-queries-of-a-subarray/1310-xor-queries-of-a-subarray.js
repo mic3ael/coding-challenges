@@ -19,8 +19,6 @@ var xorQueries = function(arr, queries) {
         let current = prefixSum[rightIdx];
         if(leftIdx > 0)
             current ^= prefixSum[leftIdx - 1];
-        else 
-            current = prefixSum[rightIdx];
         result[i] = current;
     }
 
