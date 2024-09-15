@@ -16,6 +16,7 @@ var largestValues = function(root) {
     const queue = [ root ];
     let levelNodes = 1;
     let levelMax = -Infinity;
+    
     while(queue.length){
         const node = queue.shift();
         levelNodes--;
