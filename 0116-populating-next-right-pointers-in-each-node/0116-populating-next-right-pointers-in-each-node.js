@@ -29,7 +29,6 @@ var connect = function(root) {
 
         if(prev == null) {
             prev = node;
-            prev.next = null;
         } else {
             prev.next = node;
             prev = node;
