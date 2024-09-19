@@ -7,6 +7,5 @@ var scoreOfString = function(s) {
     for(let i = 1; i < s.length; i++){
         sum += Math.abs(s.charCodeAt(i - 1) - s.charCodeAt(i));
     }
-
     return sum;
 };
