@@ -70,7 +70,7 @@ class MinHeap {
  * @param {number} k
  * @return {number}
  */
-var networkDelayTime = function(times, n, k) {
+var networkDelayTime2 = function(times, n, k) {
     if(n == 0) return 0;
     const costs = new Array(n + 1).fill(Infinity);
     const graph = new Map();
@@ -78,16 +78,16 @@ var networkDelayTime = function(times, n, k) {
     costs[k] = 0;
     minHeap.add({ key: k, weight: 0 });
 
-    for(let i = 1; i <= n; i++){
+    for(let i = 1; i <= n; i++) {
         graph.set(i, []);
     }
 
-    for(let i = 0; i < times.length; i++){
+    for(let i = 0; i < times.length; i++) {
         const [source, target, weight] = times[i];
         graph.get(source).push([ target, weight ]);
     }
 
-    while(!minHeap.isEmpty()){
+    while(!minHeap.isEmpty()) {
         const { key, weight } = minHeap.delete();
         const connections = graph.get(key);
         for(let i = 0; i < connections.length; i++){
@@ -113,3 +113,21 @@ var networkDelayTime = function(times, n, k) {
     if(infinityCount > 1) return -1;
     return result;
 };
+
+var networkDelayTime = function(times, n, k) {
+    if(n == 0) return 0;
+    const costs = new Array(n).fill(Infinity);
+    costs[k - 1] = 0;
+
+    while(n > 0) {
+        for(let i = 0; i < times.length; i++) {
+            const [source, target, weight] = times[i];
+            const targetCost = costs[source - 1] + weight;
+            if(targetCost == Infinity) continue;
+            costs[target - 1] = Math.min(targetCost, costs[target - 1]);
+        }
+        n--;
+    }
+    const max = Math.max(...costs);
+    return max == Infinity ? -1 : max;
+}
