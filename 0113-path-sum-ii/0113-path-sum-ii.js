@@ -21,12 +21,10 @@ function dfs(node, targetSum, sum, result, current = []){
     if(node == null) return;
     current.push(node.val);
     sum += node.val;
-    
     if(targetSum == sum && node.left == null && node.right == null) {
         result.push(current);
         return;
     }
-    
     dfs(node.left, targetSum, sum, result, [...current]);
     dfs(node.right, targetSum, sum, result, [...current]);
 }
