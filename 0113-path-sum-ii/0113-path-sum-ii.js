@@ -13,7 +13,7 @@
  */
 var pathSum = function(root, targetSum) {
     const result = [];
-    dfs(root, targetSum, 0,  result);
+    dfs(root, targetSum, 0, result);
     return result;
 };
 
