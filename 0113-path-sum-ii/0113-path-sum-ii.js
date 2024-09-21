@@ -19,13 +19,12 @@ var pathSum = function(root, targetSum) {
 
 function dfs(node, targetSum, sum, result, current = []){
     if(node == null) return;
-
+    current.push(node.val);
     sum += node.val;
     if(node.left == null && node.right == null) {
-        current.push(node.val);
         if(targetSum == sum) result.push(current);
         return;
     }
-    dfs(node.left, targetSum, sum, result, [...current, node.val]);
-    dfs(node.right, targetSum, sum, result, [...current, node.val]);
+    dfs(node.left, targetSum, sum, result, [...current]);
+    dfs(node.right, targetSum, sum, result, [...current]);
 }
