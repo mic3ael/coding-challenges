@@ -1,32 +1,20 @@
 
-function calc(nums){
-    const calcArr = [1];
-    
-    return calcArr;
-}
 
 /**
  * @param {number[]} nums
  * @return {number[]}
  */
 var productExceptSelf = function(nums) {
-    const preCalc = [1];
-    for(let i = 0; i < nums.length - 1; i++){
-        const mul = preCalc[preCalc.length - 1];
-        preCalc.push(mul * nums[i]);
-    }
+    const prefix = new Array(nums.length).fill(1);
+    const suffix = new Array(nums.length).fill(1);
 
-    const postCalc = [1];
-    for(let i = nums.length - 1; i > 0; i--){
-        const mul = postCalc[0];
-        postCalc.unshift(mul * nums[i]);
-    }
+    for(let i = 1; i < nums.length; i++)
+        prefix[i] = prefix[i-1] * nums[i - 1];
+    for(let i = nums.length - 2; i >=0; i--)
+        suffix[i] = suffix[i + 1] * nums[i+1];
     
-    const result = [];
-    for(let i = 0; i < preCalc.length; i++){
-        const pre = preCalc[i];
-        const post = postCalc[i];
-        result.push(pre * post);
-    }
-    return result;
+    const answer = [];
+    for(let i = 0; i < nums.length; i++)
+        answer[i] = prefix[i] * suffix[i];
+    return answer;
 };
