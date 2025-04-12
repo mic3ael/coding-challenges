@@ -3,39 +3,29 @@
  * @return {boolean}
  */
 var isValidSudoku = function(board) {
-    // validate rows
-    for(let row = 0; row < 9; row++){
-        const unique = new Set();
-        for(let col = 0; col < 9; col++){
+    const n = 9;
+    
+    const rows = new Array(n).fill(null).map(_ => new Set());
+    const cols = new Array(n).fill(null).map(_ => new Set());
+    const boxes = new Array(n).fill(null).map(_ => new Set());
+    
+    for(let row = 0; row < n; row++){
+        for(let col = 0; col < n; col++){
             const val = board[row][col];
             if(val === '.') continue;
-            if(unique.has(val)) return false;
-            unique.add(val);
+            
+            if(rows[row].has(val)) return false;
+            else rows[row].add(val);
+            
+            if(cols[col].has(val)) return false;
+            else cols[col].add(val);
+
+            const boxNum = Math.floor(row/3) * 3 + Math.floor(col/3);
+            const box = boxes[boxNum];
+            if(box.has(val)) return false;
+            else box.add(val);
         }
     }
 
-    // validate cols
-    for(let col = 0; col < 9; col++){
-        const unique = new Set();
-        for(let row = 0; row < 9; row++){
-            const val = board[row][col];
-            if(val === '.') continue;
-            if(unique.has(val)) return false;
-            unique.add(val);
-        }
-    }
-    
-    // validate boxes
-    const boxUnique = new Array(9).fill(null).map(_ => new Set());
-    for(let row = 0; row < 9; row++){
-        for(let col = 0; col < 9; col++){
-            const val = board[row][col];
-            if(val === '.') continue;
-            const boxNumber = Math.floor(row/3) * 3 + Math.floor(col/3);
-            const unique = boxUnique[boxNumber];
-            if(unique.has(val)) return false;
-            unique.add(val);
-        }
-    }
     return true;
 };
