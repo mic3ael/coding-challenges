@@ -1,22 +1,32 @@
+
+function calc(nums){
+    const calcArr = [1];
+    
+    return calcArr;
+}
+
 /**
  * @param {number[]} nums
  * @return {number[]}
  */
 var productExceptSelf = function(nums) {
-    const leftToRight = [1];
-    const rightToLeft = [1];
-
-    let i = 0;
-
-    while(i < nums.length - 1){
-        leftToRight.push(leftToRight[i] * nums[i]);
-        rightToLeft.unshift(rightToLeft[0] * nums[nums.length -1 - i]);
-        i++;
+    const preCalc = [1];
+    for(let i = 0; i < nums.length - 1; i++){
+        const mul = preCalc[preCalc.length - 1];
+        preCalc.push(mul * nums[i]);
     }
 
+    const postCalc = [1];
+    for(let i = nums.length - 1; i > 0; i--){
+        const mul = postCalc[0];
+        postCalc.unshift(mul * nums[i]);
+    }
+    
     const result = [];
-    for(let i = 0; i < leftToRight.length; i++){
-        result.push(leftToRight[i] * rightToLeft[i]);
+    for(let i = 0; i < preCalc.length; i++){
+        const pre = preCalc[i];
+        const post = postCalc[i];
+        result.push(pre * post);
     }
     return result;
 };
