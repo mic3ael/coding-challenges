@@ -15,8 +15,8 @@ var longestConsecutive = function(nums) {
             next = next + 1;
             count++;
         }
-
-        result = Math.max(result, next - num);
+        const diff = next - num;
+        result = Math.max(result, diff);
     }
 
     return result;
