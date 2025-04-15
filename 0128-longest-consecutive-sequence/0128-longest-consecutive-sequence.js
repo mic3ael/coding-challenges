@@ -8,15 +8,12 @@ var longestConsecutive = function(nums) {
     for(const num of nums){
         const prev = num - 1;
         if(lookup.has(prev)) continue;
-        let next = num + 1;
-        let count = 1;
-        while(lookup.has(next)) {
-            lookup.delete(next);
-            next = next + 1;
-            count++;
+        let length = 0;
+        while(lookup.has(num + length)) {
+            lookup.delete(num + length);
+            length++;
         }
-        const diff = next - num;
-        result = Math.max(result, diff);
+        result = Math.max(result, length);
     }
 
     return result;
